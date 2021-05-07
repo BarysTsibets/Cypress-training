@@ -18,6 +18,12 @@ describe('UI Elements2', function(){
         //check multiply checkboxes
         cy.get('[type="checkbox"]').check(['Hockey', 'Movies'])
 
+    })
+
+    it('Skills Drop Down menu (static)', function(){
+        
+        // Pick something from static drop down menu
+        cy.get('#Skills').select('APIs').should('have.value', 'APIs')
 
     })
 
