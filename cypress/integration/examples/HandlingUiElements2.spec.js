@@ -24,15 +24,24 @@ describe('UI Elements2', function(){
         
         // Pick something from static drop down menu
         cy.get('#Skills').select('APIs').should('have.value', 'APIs')
-
     })
 
 
-    it.only('Multiply options Drop Down menu', function(){
+    it('Multiply options Drop Down menu', function(){
 
-        cy.visit('http://demo.automationtesting.in/Register.html')
+        //cy.visit('http://demo.automationtesting.in/Register.html')
+        
         cy.get('#msdd').click()
-        cy.get('.ui-corner-all').contains('Japanese').click()
+        cy.get('.ui-corner-all').contains('Japanese').click()  //Pick multiply options from drop down
+
+    })
+
+    it.only('Searcheable Drop Down', function(){
+
+        //cy.visit('http://demo.automationtesting.in/Register.html')
+        cy.get('.select2-selection').click({force:true})
+        cy.get('.select2-search__field').type('Jap')
+        cy.get('.select2-search__field').type('{enter}')
 
     })
 })
