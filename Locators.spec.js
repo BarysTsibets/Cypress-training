@@ -17,12 +17,13 @@ describe('End to end test', function(){
         cy.get('#add-to-cart-button-4').click()                            // click add to the cart button
 
         cy.get('.content').contains('The product has been added to your ') //verification of success messge
-        
+
         cy.get('.close').click()                                           //close header notification window                     
 
-        cy.get('.cart-label').click()                                   // go to the shopping cart
+        cy.get('.cart-label').click()                                        // go to the shopping cart
 
-
+        cy.get('.product-name').should('contain','Apple MacBook Pro 13-inch') //assert name of the product
+        cy.get('.product-unit-price').should('contain','$1,800.00')           //assert price of the product
 
     })
 })
