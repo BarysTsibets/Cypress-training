@@ -2,13 +2,13 @@
 
 describe('Navigation Suit', function(){
 
-    it('Alerts', function()
+    it('back/forward actions', function()
     {
         cy.visit('https://demo.nopcommerce.com/')                 //Home page
-        cy.title().should('eq', 'nopCommerce demo store')         // assert Home p[age title
+        cy.title().should('eq', 'nopCommerce demo store')         // assert Home page title
 
-        cy.get('.ico-register').contains('Reg').click()                // Reg Page
-        cy.title().should('eq', 'nopCommerce demo store. Register')    // assert reg page title 
+        cy.get('.ico-register').contains('Reg').click()                // go to Reg Page
+        cy.title().should('eq', 'nopCommerce demo store. Register')    // assert Reg page title 
 
         cy.go('back')                                                  //back to Home page
         cy.title().should('eq', 'nopCommerce demo store')
@@ -19,11 +19,6 @@ describe('Navigation Suit', function(){
         cy.go(-1)   //back to Home page
 
         cy.go(1)   //forward to Reg page
-
-
-
-
-
 
     })
 
