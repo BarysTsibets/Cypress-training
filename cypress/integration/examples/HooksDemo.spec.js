@@ -2,6 +2,8 @@
 
 describe('Hooks suit', function(){
 
+//before, after, beforeEach, afterEach methods should stay in describe section
+
     before(() => {
        // runs once before all tests in the block
         cy.log('------ This is Before method ------')
@@ -22,6 +24,7 @@ describe('Hooks suit', function(){
         cy.log('------ This is After method ------')
       })
 
+// testing section
 
     it('Search block tests', function()
     {
