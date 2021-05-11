@@ -2,6 +2,16 @@
 
 describe('Fixtures Suit', function(){
 
+    // fixture block (fixture/example - contain email and password data)
+    before(function(){
+        cy.fixture('example').then(function(data){
+            this.data = data                           //initialization of 'dara' variable
+        })
+    })
+
+
+
+    // "Login to the admin page" flow 
     it('Fixtures Demo test', function()
     {
         cy.visit('https://admin-demo.nopcommerce.com/login')
