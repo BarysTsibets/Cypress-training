@@ -4,45 +4,44 @@ describe('Custom Command Suit', function(){
 
     it('LogIn flow ', function()
     {
-        cy.visit('https://admin-demo.nopcommerce.com/login')
+        //valid credentials - POSITIVE test
+       cy.login_function('admin@yourstore.com','admin')      // login_function stored in support/commands.js
+       cy.title().should('be.eq', 'Dashboard / nopCommerce administration')    
 
-        cy.get('#Email').clear().type('admin@yourstore.com')                                               // email stored in this.data.email variable
-        cy.get('#Password').clear().should('be.visible').should('be.enabled').type('admin')                // password stored in this.data.password variable
-        cy.get('.button-1').should('be.visible').click()
+        // invalid email + valid password - NEGATIVE test
+       cy.login_function('abc@yourstore.com','admin')      // login_function stored in support/commands.js
+       cy.title().should('not.be.eq', 'Dashboard / nopCommerce administration')   
+       cy.title().should('eq','Your store. Login')
+
+        // valid email + invalid password - NEGATIVE test
+       cy.login_function('admin@yourstore.com','admin123')      // login_function stored in support/commands.js
+       cy.title().should('not.be.eq', 'Dashboard / nopCommerce administration') 
+       cy.title().should('eq','Your store. Login')
     })
 
 
-    it('Add customer test', function()         // Login + add customer flow
+    it('Add customer test', function()                       // Login + add customer flow
     {
         // login flow
-        cy.visit('https://admin-demo.nopcommerce.com/login')
-        cy.get('#Email').clear().type('admin@yourstore.com')                                              // email stored in this.data.email variable
-        cy.get('#Password').clear().should('be.visible').should('be.enabled').type('admin')               // password stored in this.data.password variable
-        cy.get('.button-1').should('be.visible').click()
+        cy.login_function('admin@yourstore.com','admin')      // Login function stored in support/commands.js
 
         //add customer actions
         cy.log('Adding customer actions *********')
     })
 
-    it('Edit customer test', function()        // Login + Edit customer flow
+    it('Edit customer test', function()                      // Login + Edit customer flow
     {
         // login flow
-        cy.visit('https://admin-demo.nopcommerce.com/login')
-        cy.get('#Email').clear().type('admin@yourstore.com')                                            // email stored in this.data.email variable
-        cy.get('#Password').clear().should('be.visible').should('be.enabled').type('admin')            // password stored in this.data.password variable
-        cy.get('.button-1').should('be.visible').click()
+        cy.login_function('admin@yourstore.com','admin')      // Login function stored in support/commands.js
 
         //Edit customer actions
         cy.log('Edit customer actions *********')
     })
 
-    it('Delete customer test', function()        // Login + Delete customer flow
+    it('Delete customer test', function()                     // Login + Delete customer flow
     {
         // login flow
-        cy.visit('https://admin-demo.nopcommerce.com/login')
-        cy.get('#Email').clear().type('admin@yourstore.com')                                            // email stored in this.data.email variable
-        cy.get('#Password').clear().should('be.visible').should('be.enabled').type('admin')            // password stored in this.data.password variable
-        cy.get('.button-1').should('be.visible').click()
+        cy.login_function('admin@yourstore.com','admin')      // Login function stored in support/commands.js
 
         //Delete customer actions
         cy.log('Delete customer actions *******')
